@@ -1,7 +1,44 @@
 {
+    "name": "abcinemas/backend-api",
+    "description": "ABC Cinemas Backend API - A comprehensive cinema booking system",
+    "type": "project",
+    "keywords": ["cinema", "booking", "api", "php", "slim"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ABC Cinemas Team",
+            "email": "dev@abcinemas.com"
+        }
+    ],
+    "minimum-stability": "stable",
     "require": {
+        "php": ">=7.4",
         "slim/slim": "4.*",
         "slim/psr7": "^1.7",
         "tuupola/cors-middleware": "^1.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ABCinemas\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ABCinemas\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "start": "php -S localhost:8088 -t api",
+        "test": "phpunit",
+        "post-install-cmd": [
+            "php -r \"if (!file_exists('.env') && file_exists('.env.example')) { copy('.env.example', '.env'); }\""
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
     }
 }
